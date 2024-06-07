@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.PersonMapper" >
+	
+	<insert id="save" parameterType="Person" flushCache="true">
+		insert into Person (id, person_name) values (#{id}, #{personName})
+	</insert>
+	
+	<update id="update" parameterType="Person">
+		update person set person_name = #{personName} where id = #{id}
+	</update>
+	
+	<delete id="delete" parameterType="String">
+		delete from person where id = #{id}		
+	</delete>
+	
+	<select id="findAll" resultType="Person">
+		select p.id, p.person_name personName from person p
+	</select> 	
+	
+	<select id="findById" parameterType="String" resultType="Person">
+		select p.id, p.person_name personName from person p where p.id = #{id}
+	</select> 	
+ 	
+ 	
+ 	
+</mapper>
